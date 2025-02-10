@@ -38,7 +38,6 @@ The script will start running and send you all the updated classes you added to 
 The Subject code according to the list below:
 | Code | Subject |
 |---------|------|
-|ACEN | Academic English |
 |AM | Applied Mathematics |
 |ANTH | Anthropology |
 |APLX | Applied Linguistics |
@@ -53,7 +52,6 @@ The Subject code according to the list below:
 |CHEM | Chemistry and Biochemistry |
 |CHIN | Chinese |
 |CLNI | College Nine |
-|CLST | Classical Studies |
 |CMMU | Community Studies |
 |CMPM | Computational Media |
 |COWL | Cowell College |
@@ -70,7 +68,6 @@ The Subject code according to the list below:
 |EDUC | Education |
 |ENVS | Environmental Studies |
 |ESCI | Environmental Sciences |
-|FIL | Filipino |
 |FILM | Film and Digital Media |
 |FMST | Feminist Studies |
 |FREN | French |
@@ -78,7 +75,6 @@ The Subject code according to the list below:
 |GCH | Global and Community Health |
 |GERM | German |
 |GIST | Geographic Info Systems, Science, & Technologies |
-|GRAD | Graduate |
 |GREE | Greek |
 |HAVC | History of Art and Visual Culture |
 |HEBR | Hebrew |
@@ -89,9 +85,7 @@ The Subject code according to the list below:
 |ITAL | Italian |
 |JAPN | Japanese |
 |JRLC | John R Lewis College |
-|JWST | Jewish Studies |
 |KRSG | Kresge College |
-|LAAD | Languages |
 |LALS | Latin American and Latino Studies |
 |LATN | Latin |
 |LGST | Legal Studies |
@@ -111,11 +105,9 @@ The Subject code according to the list below:
 |PHYE | Physical Education |
 |PHYS | Physics |
 |POLI | Politics |
-|PORT | Portuguese |
 |PRTR | Porter College |
 |PSYC | Psychology |
 |PUNJ | Punjabi |
-|RUSS | Russian |
 |SCIC | Science Communication |
 |SOCD | Social Documentation |
 |SOCY | Sociology |
