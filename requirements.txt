@@ -1,0 +1,5 @@
+requests
+pywhatkit
+beautifulsoup4
+twilio
+python-dotenv
