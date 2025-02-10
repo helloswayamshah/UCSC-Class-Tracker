@@ -83,11 +83,15 @@ def get_data(class_ids, term, subject, cached, cached_spots, client, initial):
 load_dotenv(dotenv_path=env_path)
 client = whatsapp_init()
 
+classes = [102, 103, "114a", "115a", "180", "186"] #Change the classes here
+Subject = "CSE" #Change the subject here
+term = "2250" #Change the term here
+
 cached_status = {}
 cached_spots = {}
 init = True
 while True:
     print(time.ctime())
-    get_data([102, 103, "114a", "115a", "180", "186"], "2250" ,"CSE", cached_status, cached_spots, client, init)
+    get_data(classes, term, Subject, cached_status, cached_spots, client, init)
     init = False
     time.sleep(60*15)
