@@ -1,0 +1,16 @@
+name: classTracker-postgres
+
+services:
+  postgres:
+    container_name: classTracker-postgres
+    image: postgres
+    hostname: localhost
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ClassTracker
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/createDatabase.sql:/docker-entrypoint-initdb.d/1.createDatabase.sql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/2.schema.sql

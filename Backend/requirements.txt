@@ -1,0 +1,11 @@
+requests
+pywhatkit
+beautifulsoup4
+twilio
+python-dotenv
+flask
+flask-cors
+psycopg2
+connexion[flask]
+connexion[uvicorn]
+connexion[swagger-ui]

@@ -1,0 +1,321 @@
+openapi: '3.0.3'
+
+info:
+  description: ClassTracking API
+  version: 1.0.0
+  title: ClassTracking API
+
+servers:
+  - url: http://localhost:3010/api/v1
+
+paths:
+  /classData:
+    description: "Api handles requests for class data"
+    get:
+      operationId: controller.get_data
+      description: "Get all class data"
+      parameters:
+      - name: class
+        in: query
+        description: "Class to search for"
+        required: false
+        schema:
+          type: string
+      - name: subject
+        in: query
+        description: "Subject to search for"
+        required: false
+        schema:
+          type: string
+      - name: quarter
+        in: query
+        description: "Quarter to search for"
+        required: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: |
+            Successfully retrieved class data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClassData"
+        404:
+          description: |
+            No class data found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /quarterCode:
+    description: |
+      Api handles requests for quarter codes
+    get:
+      description: "Get quarter code from quarter string"
+      operationId: controller.getQuarter
+      parameters:
+      - name: quarter
+        in: query
+        description: "Quarter to search for"
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: |
+            Successfully retrieved quarter code
+          content:
+            application/json:
+              schema:
+                type: string
+        404:
+          description: |
+            No quarter code found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /trackClasses/{userId}:
+    description: |
+      Api handles requests for tracking classes
+    post:
+      description: "Start tracking classes"
+      operationId: controller.trackClasses
+      parameters:
+      - name: userId
+        in: path
+        description: "User to track classes for"
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: track
+        in: query
+        description: "Track or untrack classes"
+        required: true
+        schema:
+          type: boolean
+      - name: quarter
+        in: query
+        description: "Quarter to track"
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  subject:
+                    type: string
+                    description: "Subject of class"
+                    maxLength: 5
+                  class_nbr:
+                    type: string
+                    description: "Class number"
+                    maxLength: 5
+      responses:
+        201:
+          description: |
+            Successfully started tracking classes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Successfully started tracking classes"
+        204:
+          description: |
+            Successfully stopped tracking classes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Successfully stopped tracking classes
+  /signup:
+    description: |
+      Api handles requests for signing up
+    post:
+      description: Sign up for ClassTracking
+      operationId: controller.signup
+      parameters:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserSignup"
+      responses:
+        201:
+          description: |
+            Successfully signed up
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Successfully signed up"
+        400:
+          description: |
+            User already exists
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /signin:
+    description: |
+      Api handles requests for signing in
+    post:
+      description: Sign in to ClassTracking
+      operationId: controller.signin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserSignin"
+      responses:
+        200:
+          description: |
+            Successfully signed in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Successfully signed in"
+        400:
+          description: |
+            Invalid credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Invalid credentials"
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: "Error message"
+
+    ClassData:
+      type: object
+      properties:
+        catalog_nbr:
+          type: string
+          description: "Catalog number"
+        class_nbr: 
+          type: string
+          description: "Class number"
+        class_section: 
+         type: string
+         description: "Class section"
+        class_status: 
+          type: string
+          description: "Class status"
+        component: 
+          type: string
+          description: "Type of class"
+        end_time:
+          type: string
+          description: "End time of class"
+        enrl_capacity:
+          type: string
+          description: "Enrollment capacity"
+        enrl_status:
+          type: string
+          description: "Enrollment status"
+        enrl_total:
+          type: string
+          description: "Students enrolled"
+        instructors:
+          type: array
+          items:
+            type: object
+            properties:
+              cruzid:
+                type: string
+                description: "CruzId of Instructor"
+              name:
+                type: string
+                description: "Name of Instructor"
+        location:
+          type: string
+          description: "Location of class"
+        meeting_days:
+          type: string
+          description: "Days class meets"
+        session_code:
+          type: string
+          description: "Session code"
+        start_time: 
+          type: string
+          description: "Start time of class"
+        strm:
+          type: string
+          description: "Number format of the quarter/Term"
+        subject:
+          type: string
+          description: "Subject of class"
+        title: 
+          type: string
+          description: "Title of class"
+        title_lon:
+          type: string
+          description: "Title of class in long form"
+        waitlist_total:
+          type: string
+          description: "Total number of students on waitlist"
+      additionalProperties: false
+
+    UserSignup:
+      type: object
+      properties:
+        email:
+          type: string
+          description: "Email of user"
+        password:
+          type: string
+          description: "Password of user"
+        phoneNo:
+          type: string
+          description: "Phone number of user"
+        pingMedium:
+          type: string
+          maxLength: 1
+          description: "Medium to ping user"
+      additionalProperties: false
+
+    UserSignin:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: "Email of user"
+        password:
+          type: string
+          description: "Password of user"
+      additionalProperties: false

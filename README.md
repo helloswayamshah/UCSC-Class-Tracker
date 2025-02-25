@@ -11,26 +11,7 @@ Key Features:
 This tool helps students secure spots in high-demand classes by eliminating the need for manual course availability checks.
 
 ## How to Use
-The script presently doesn't have any interface or database but has a UI and web app interface planner, to use the script before the release of UI, you can follow the steps below:
-1. Clone the repository locally
-2. create a .env file as given below \
-   ```
-   AUTH="[Your Twilio Auth Key]"
-   PHONE_NUMBER="[Your Phone Number with Whatsapp]"
-   SID="[Your Account SID]"
-   ```
-3. create a python virtual environment and install dependencies using the command below:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Change the classes, Subject, and term accoring to the parameter details given.
-5. Run the script using command below locally
-  ```bash
-  python main.py
-  ```
-
-The script will start running and send you all the updated classes you added to your watch list;
-
+No Longer, need to change, you can just make requests to the apis, FrontEnd Coming Soon....
 ## Parameter Details
 ### classes
  The Class Code, for example 115a for a class with CSE 115a
@@ -123,4 +104,4 @@ The Subject code according to the list below:
 |YIDD | Yiddish |
 
 ### Term
-The term number for the Winter 2025 quarter is 2250 and the further ones can be determined by adding +1 for every quarter passed.
+API can get the code automatically, FrontEnd Coming Soon.
